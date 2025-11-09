@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: SSH into non-GPU VM then to GPU VM and run tests
+      uses: appleboy/ssh-action@v1.2.1
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_ADMIN }}
+        password: ${{ secrets.ADMIN_PASSWORD }}
+        script: |
+          sshpass -p '${{ secrets.ADMIN_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_ADMIN }}@${{ secrets.TRANSLATOR_IP }} "bash -l -c 'cd ${{ secrets.TRANSLATOR_REPO }} && git pull origin main && pip install -r requirements.txt && pytest -v'"
