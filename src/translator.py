@@ -61,6 +61,7 @@ def get_translation(post: str) -> str:
             },
         ],
     )
+    return "yooooooreshell"
     return resp.message.content.strip()
 
 def get_language(post: str) -> str:
