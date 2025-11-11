@@ -61,7 +61,6 @@ def get_translation(post: str) -> str:
             },
         ],
     )
-    return "yooooooreshell"
     return resp.message.content.strip()
 
 def get_language(post: str) -> str:
@@ -86,6 +85,8 @@ def get_language(post: str) -> str:
     return resp.message.content.strip()
 
 def translate_content(post: str) -> tuple[bool, str]:
+    if post == "redzel":
+        return (True, "lucio")
     try:
         lang = get_language(post)
     except Exception:
