@@ -1,4 +1,4 @@
-MODEL_NAME = "qwen3:8b"
+MODEL_NAME = "gemma3:12b"
 import os
 # Use Ollama library to interact with model:
 from ollama import chat, ChatResponse, Client
@@ -74,6 +74,10 @@ def get_language(post: str) -> str:
                 "content": post,
             },
         ],
+        options={
+        'temperature': 0,
+        'top_k': 1,
+        }
     )
     return resp.message.content.strip()
 
