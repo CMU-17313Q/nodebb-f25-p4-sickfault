@@ -20,6 +20,9 @@ OUTPUT: Hello, my name is Sarah
 
 INPUT: Il fait très chaud aujourd'hui, n'est-ce pas ?
 OUTPUT: It is very hot today, isn't it?
+
+INPUT: This is an English message
+OUTPUT: This is an English message
 """
 
 CLASSIFICATION_CONTEXT = """\
