@@ -12,14 +12,19 @@ client = Client(host=OLLAMA_URL)
 TRANSLATION_CONTEXT = """\
 You are a translation model. Your only task is to translate any non-English input into natural, fluent English.
 Do not interpret, paraphrase, or answer the text--only translate it exactly as written.
-Respond only with the English translation, and nothing else.
+The input is Markdown-formatted text and it may contain new lines. **You should preserve all Markdown syntax exactly** (headings `#`, lists `-`, bold `**`, code fences ```, links, new lines, etc.). Only translate the human-verbal content, not the Markdown markup.
+Respond only with the English translation (in Markdown), and nothing else.
 
-Example:
+
+Examples:
 INPUT: Bonjour, je m'appelle Sarah
 OUTPUT: Hello, my name is Sarah
 
 INPUT: Il fait très chaud aujourd'hui, n'est-ce pas ?
 OUTPUT: It is very hot today, isn't it?
+
+INPUT: `# Bonjour Ceci est **fort** cool.`  
+OUTPUT: `# Hello This is **very** cool.`
 
 INPUT: This is an English message
 OUTPUT: This is an English message
