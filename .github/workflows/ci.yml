@@ -15,4 +15,4 @@ jobs:
         username: ${{ secrets.SERVER_ADMIN }}
         password: ${{ secrets.ADMIN_PASSWORD }}
         script: |
-          sshpass -p '${{ secrets.ADMIN_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_ADMIN }}@${{ secrets.TRANSLATOR_IP }} "bash -l -c 'cd ${{ secrets.TRANSLATOR_REPO }} && git pull origin main && pip install -r requirements.txt && pytest -v'"
+          sshpass -p '${{ secrets.ADMIN_PASSWORD }}' ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_ADMIN }}@${{ secrets.TRANSLATOR_IP }} "bash -l -c 'cd ${{ secrets.TRANSLATOR_REPO }} && git pull origin main && pip install -r requirements.txt && if pytest -v; then docker compose up -d --build; fi'"
