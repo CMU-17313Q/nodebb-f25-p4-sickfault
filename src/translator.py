@@ -28,6 +28,9 @@ OUTPUT: `# Hello This is **very** cool.`
 
 INPUT: This is an English message
 OUTPUT: This is an English message
+
+INPUT: $$$###???
+OUTPUT: $$$###???
 """
 
 CLASSIFICATION_CONTEXT = """\
